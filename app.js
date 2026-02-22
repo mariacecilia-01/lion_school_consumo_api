@@ -1,23 +1,26 @@
 'use strict'
 
+async function selecionarCurso() {
 
-function selecionarCurso(){
-    const url = `https://lion-school-phbo.onrender.com/cursos`
+    const response = await fetch('https://lion-school-phbo.onrender.com/cursos')
+    const cursos = await response.json()
 
-    const container = document.getElementById('container')
-    
-    // const divEsquerda = document.createElement('div')
-    // const h1 = document.createElement('h1')
-    // const fotoDispositivos = document.createElement('img')
-    // const fotoEstudante = document.createElement('img')
+    const container = document.getElementById('lista-cursos')
+    container.innerHTML = ''
 
-    // h1.textContent(`Escolha um curso para gerenciar`)
-    // fotoDispositivos.src = `./img/devices.png`
+    cursos.forEach(curso => {
+        const botaoCurso = document.createElement('button')
+        botaoCurso.textContent = curso.nome
 
-    // divEsquerda.appendChild(h1)
-    // divEsquerda.appendChild(fotoDispositivos)
-    // divEsquerda.appendChild(fotoEstudante)
-    // container.appendChild(divEsquerda)
+        botaoCurso.addEventListener('click',() => {
+            window.location.href = `https://lion-school-phbo.onrender.com/cursos/${curso.id}`
+        })
+
+        container.appendChild(botaoCurso)
+        
+    })
+
+
 
 
 
