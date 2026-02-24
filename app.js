@@ -1,27 +1,38 @@
 'use strict'
 
-async function selecionarCurso() {
+const container = document.getElementById('container')
 
-    const response = await fetch('https://lion-school-phbo.onrender.com/cursos')
+async function buscarCurso() {
+    const url = 'https://lion-school-phbo.onrender.com/cursos'
+    const response = await fetch(url)
     const cursos = await response.json()
 
-    const container = document.getElementById('lista-cursos')
-    container.innerHTML = ''
+    return cursos   
+}
+
+async function selecionarCurso() {
+
+    const divDireita = document.getElementById('divDireita')
+    const cursos = await buscarCurso()
 
     cursos.forEach(curso => {
         const botaoCurso = document.createElement('button')
-        botaoCurso.textContent = curso.nome
-
-        botaoCurso.addEventListener('click',() => {
-            window.location.href = `https://lion-school-phbo.onrender.com/cursos/${curso.id}`
-        })
-
-        container.appendChild(botaoCurso)
+        botaoCurso.className = 'botaoCurso'
         
+        const img = document.createElement('img')
+        img.src = `./img/${curso.sigla}-icon.svg`
+        img.alt = curso.sigla
+
+        const nomeCurso = document.createElement('p')
+        nomeCurso.textContent = curso.sigla
+
+        botaoCurso.appendChild(img)
+        botaoCurso.appendChild(nomeCurso)
+        divDireita.appendChild(botaoCurso)
     })
-
-
-
-
-
+    
+    container.appendChild(divDireita)
 }
+
+buscarCurso()
+selecionarCurso()
