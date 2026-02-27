@@ -29,10 +29,44 @@ async function selecionarCurso() {
         botaoCurso.appendChild(img)
         botaoCurso.appendChild(nomeCurso)
         divDireita.appendChild(botaoCurso)
+
+        botaoCurso.addEventListener('click', mostrarPaginaAlunosCurso)
+        
     })
     
     container.appendChild(divDireita)
+
+    
 }
+
+function mostrarPaginaAlunosCurso(){
+    window.location.href = './indexAlunos.html'
+}
+
+// PAGINA ALUNOS
+async function buscarAlunos() {
+    const url = 'https://lion-school-phbo.onrender.com/alunos'
+    const response = await fetch(url)
+    const alunos = await response.json()
+
+    return alunos   
+}
+
+async function listaAlunos(){
+
+    const containerCards = document.getElementById('containerCards')
+    const alunos = await buscarAlunos()
+
+    alunos.forEach(aluno => {
+        const cardAluno = document.createElement('div')
+        cardAluno.className = 'cardAluno'
+
+        const img = document.createElement('img')
+        img.src = `./img/${aluno.nome}`
+    })
+}
+
+
 
 buscarCurso()
 selecionarCurso()
