@@ -7,7 +7,7 @@ async function buscarCurso() {
     const response = await fetch(url)
     const cursos = await response.json()
 
-    return cursos   
+    return cursos
 }
 
 async function selecionarCurso() {
@@ -18,7 +18,7 @@ async function selecionarCurso() {
     cursos.forEach(curso => {
         const botaoCurso = document.createElement('button')
         botaoCurso.className = 'botaoCurso'
-        
+
         const img = document.createElement('img')
         img.src = `./img/${curso.sigla}-icon.svg`
         img.alt = curso.sigla
@@ -30,43 +30,20 @@ async function selecionarCurso() {
         botaoCurso.appendChild(nomeCurso)
         divDireita.appendChild(botaoCurso)
 
-        botaoCurso.addEventListener('click', mostrarPaginaAlunosCurso)
-        
+        botaoCurso.addEventListener('click', () => {
+            mostrarPaginaAlunosCurso(curso.id)
+        })
+
     })
-    
+
     container.appendChild(divDireita)
 
-    
+
 }
 
-function mostrarPaginaAlunosCurso(){
-    window.location.href = './indexAlunos.html'
+function mostrarPaginaAlunosCurso(id) {
+    window.location.href = `./indexAlunos.html?id=${id}`
 }
 
-// PAGINA ALUNOS
-async function buscarAlunos() {
-    const url = 'https://lion-school-phbo.onrender.com/alunos'
-    const response = await fetch(url)
-    const alunos = await response.json()
-
-    return alunos   
-}
-
-async function listaAlunos(){
-
-    const containerCards = document.getElementById('containerCards')
-    const alunos = await buscarAlunos()
-
-    alunos.forEach(aluno => {
-        const cardAluno = document.createElement('div')
-        cardAluno.className = 'cardAluno'
-
-        const img = document.createElement('img')
-        img.src = `./img/${aluno.nome}`
-    })
-}
-
-
-
-buscarCurso()
 selecionarCurso()
+
