@@ -1,7 +1,5 @@
 'use strict'
 
-const container = document.getElementById('container')
-
 async function buscarCurso() {
     const url = 'https://lion-school-phbo.onrender.com/cursos'
     const response = await fetch(url)
@@ -11,6 +9,7 @@ async function buscarCurso() {
 }
 
 async function selecionarCurso() {
+    const container = document.getElementById('container')
 
     const divDireita = document.getElementById('divDireita')
     const cursos = await buscarCurso()
@@ -47,3 +46,6 @@ function mostrarPaginaAlunosCurso(id) {
 
 selecionarCurso()
 
+module.exports = {
+    mostrarPaginaAlunosCurso
+}
