@@ -1,4 +1,5 @@
 // PAGINA ALUNOS
+'use strict'
 
 async function buscarCurso() {
     const url = 'https://lion-school-phbo.onrender.com/cursos'
@@ -19,8 +20,8 @@ async function buscarAlunos() {
 
 async function listaAlunos(){
     const container = document.getElementById('container')
-
     const containerCards = document.getElementById('containerCards')
+
     const alunos = await buscarAlunos()
 
     //nome do curso
@@ -37,25 +38,43 @@ async function listaAlunos(){
     container.appendChild(nomeCurso)
 
     alunos
-        .filter(aluno => aluno.idCurso == idCurso)
+        .filter(aluno => aluno.curso_id == idCurso)
         .forEach(aluno => {
             const cardAluno = document.createElement('div')
             cardAluno.className = 'cardAluno'
 
             const img = document.createElement('img')
-            img.src = `./img/${aluno.foto}`
+            img.src = aluno.foto
             img.className = 'fotoAluno'
 
             const nomeAluno = document.createElement('p')
-            nomeAluno.textContent = aluno.nome
+            nomeAluno.textContent = aluno.nome.toUpperCase()
             nomeAluno.className = 'nomeAluno'
 
             cardAluno.appendChild(img)
             cardAluno.appendChild(nomeAluno)
             containerCards.appendChild(cardAluno)
+
+            cardAluno.addEventListener('click', () => {
+            abrirCardAluno(aluno.id)
         })
+
+    })
 
     container.appendChild(containerCards)
 }
 
+function abrirCardAluno(idAluno){
+    window.location.href = `./indexDetalhesAlunos.html?id=${idAluno}`
+}
+
+function voltarPagina(){
+    const botaoSair = document.getElementById('botaoSair')
+
+        botaoSair.addEventListener('click', () => {
+        window.location.href = './index.html'
+    })
+}
+
 listaAlunos()
+voltarPagina()

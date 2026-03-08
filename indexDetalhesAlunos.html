@@ -1,53 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/scriptAlunos.js" defer></script>
-    <link rel="stylesheet" href="./styleAlunos.css">
-    <title>Lista de alunos</title>
+    <script src="/scriptDetalhesAlunos.js" defer></script>
+    <link rel="stylesheet" href="./styleDetalhesAlunos.css">
+    <title>Detalhes do aluno</title>
 </head>
+
 <body>
     <header id="headerStatus">
+
         <div class="infoPrincipaisHeader">
             <img src="./img/logo.svg" alt="logotipo" id="logotipo">
 
             <button id="botaoSair">
                 <img src="./img/sair.png" alt="sair" id="sair">
             </button>
-            
+
         </div>
 
-        <div class="statusBar">
-            <div class="statusOpcoes">
-                <select name="status" id="status">
-                    <option>Status</option>
-                    <option>Finalizado</option>
-                    <option>Cursando</option>
-                </select>
-            </div>
-
-
-            <div class="legenda">
-                <p>LEGENDA</p>
-                <div class="statusCursando">
-                    <img src="./img/quadradoAzul.svg" alt="quadradoAzul">
-                    <span>Cursando</span>
-                </div>
-                <div class="statusFinalizado">
-                    <img src="./img/quadradoAmarelo.svg" alt="quadradoAmarelo">
-                    <span>Finalizado</span>
-                </div>
-            </div>
-        </div>
     </header>
 
     <main id="container">
-        <div id="containerCards"></div>
+        <div class="infoAluno" id="infoAluno"></div>
+        <div class="notasAluno" id="notasAluno"></div>
     </main>
 
-
-
+    
     <footer>
         <div class="rodape">
             <div class="infoEscola">
@@ -74,6 +55,4 @@
 
 
     </footer>
-    
 </body>
-</html>

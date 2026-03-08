@@ -1,10 +1,11 @@
-/* SEGUNDA PÁGINA */
+/* TERCEIRA PÁGINA */
 
 * {
     padding: 0;
     box-sizing: border-box;
     margin: 0;
 }
+
 
 :root {
     --main-color: #3347B0;
@@ -89,62 +90,14 @@ option {
     align-items: center;
 }
 
-
 /* MAIN */
 
-#container {
+#container{
     height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background-color: #BCC2E5;
 }
 
-.nomeCurso {
-    color: var(--main-color);
-    font-weight: 600;
-    margin: 20px;
-    font-size: 50px;
-}
 
-#containerCards{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-
-}
-
-.cardAluno{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 250px;
-    background-color: #f4f4f4;
-    background-color: var(--main-color);
-
-}
-
-.fotoAluno{
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.nomeAluno{
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    font-weight: 400;
-    padding: 20px;
-    text-align: center;
-}
 
 
 /* FOOTER */
